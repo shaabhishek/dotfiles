@@ -1,53 +1,65 @@
 dotfiles
 ========
 
-I use Dropbox. I've created a folder vim in my dropbox, which contains my .vimrc (actually: vimrc.vim) and colors, plugin, etc. directories.
+Nice [resource](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/) to get you started.
 
-Dropbox pushes all these files to all my computers (home, work, laptop, Bootcamp), so every time I want to change my vimrc, I can do so and I don't have to worry about copying it to the correct directory or checking out the file from SVN or anything. Everything happens automagically!
+### Current dotfiles
+- bashrc
+- zshrc - currently in use with powerline
+- tcshrc - not used anymore
+- tmux.conf - has powerline, some bindings
+- vim - look up file directories to check out all the plugins I'm using
 
-My actual .vimrc contains only what's necessary to load the stuff I have in my Dropbox. On OSX and Linux, it looks like this:
+## On Linux
+---------------------
+I recommend you first install these programs:
 
-set runtimepath^=~/Dropbox/vim
-source ~/Dropbox/vim/vimrc.vim
+	sudo apt-get install vim
+    sudo apt-get install zsh
+    sudo apt-get install tmux
+    sudo apt-get install python
+    sudo apt-get install python-pip git
 
-On Windows, like this:
-----------------------
-set runtimepath^=<dropbox vim folder path> example: C:\Users\9004032456\Dropbox\abhishek-common\dotfiles
-source <dropbox vimrc path>
 
-example
+Powerline:
+
+	pip install --user git+git://github.com/Lokaltog/powerline
+    
+    
+Now proceed with the dotfiles:    
+
+    cd ~
+	git clone https://github.com/shaabhishek/dotfiles.git dotfiles
+	cd dotfiles
+    git submodule update --init
+    chmod +x makesymlinks.sh
+	./makesymlinks.sh
+    
+
+## Upgrading a plugin bundle
+-------------------------
+At some point in the future, the fugitive plugin might be updated.
+To fetch the latest changes, go into the fugitive repository, and pull the latest version:
+
+	cd ~/.vim/bundle/fugitive
+	git pull origin master
+    
+    
+## Upgrading all bundled plugins
+-----------------------------
+You can use the foreach command to execute any shell script in from the root of all submodule directories. To update to the latest version of each plugin bundle, run the following:
+
+
+	cd ~/dotfiles
+    git submodule foreach git pull origin master
+    
+
+## On Windows, like this:
 -------
-set runtimepath^=C:\Users\9004032456\Dropbox\abhishek-common\dotfiles
-call pathogen#runtime_prepend_subdirectories(expand('~/Dropbox/abhishek-common/dotfiles/vim/bundle'))
-source C:\Users\9004032456\Dropbox\abhishek-common\dotfiles\vimrc
+Your _vimrc file if you're using gVim for Windows: (make sure you update the path with the dotfiles files on your filesystem:
 
-* make sure you have pathogen
-* make sure the pathogen in vimrc points to bundle correctly
+	set runtimepath^=C:\Users\9004032456\Dropbox\abhishek-common\dotfiles
+	call pathogen#runtime_prepend_subdirectories(expand('~/Dropbox/abhishek-common/dotfiles/vim/bundle'))
+	source C:\Users\9004032456\Dropbox\abhishek-common\dotfiles\vimrc
 
-And that's it!
 
-(Actually, I put the vimrc's above in my Dropbox as well, so I don't have to remember them whenever I set up a new computer or re-install an old one.)
-
-The free version of Dropbox will give you a 30 day revision history, the paid one will give you full revision history. Note that if you're on Linux, it's easiest if you use GNOME, for which Dropbox has a nice client.
-
-Conditional Settings
-
-If you have slight configuration changes you would like to use on different machines this is a handy solution:
-
-create a small function in each of your .vimrc files to return the type of system you are on:
-
-fun! MySys()
-    return 'linux'
-endfun 
-then in your global vimrc.vim file:
-
-if MySys() == "linux"
-    set backupdir=./.backup,/tmp
-    set directory=./.backup,/tmp 
-elseif MySys() == "windows"
-    set backupdir=$HOME/AppData/Local/backup,$HOME/AppData/Local/tmp
-    set directory=$HOME/AppData/Local/backup,$HOME/AppData/Local/tmp
-endif
-Dropbox Alternatives
-
-There are many cloud storage and syncing services, Dropbox is just one example. OpenSource services such as http://sparkleshare.org/ and http://one.ubuntu.com exist, but you are encouraged to search the internet for a solution that will fit your needs best.
