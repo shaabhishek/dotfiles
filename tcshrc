@@ -1,0 +1,44 @@
+#Notes for rsync alias
+#Any files that do not exist on the 
+# remote system are copied over
+#Any files that exist on both local 
+#and remote that have a newer timestamp 
+#on the local server are copied over. 
+#(Conversely, any files that have an older timestamp are not copied over).
+
+alias rs "rsync -update -raz --progress"
+alias gvi "gvim"
+alias cm "chmod 777"
+
+# upload to godaddy server
+# usage: r2g <source> <destination>
+alias r2g "rsync -ravz --rsync-path /home/pratik14/bin/rsync -e ssh" 
+
+#rsync-commit
+#run this command to update the website on godaddy
+alias rc "rsync -update -raz --progress --rsync-path /home/pratik14/bin/rsync -e ssh ~/git/laravel/ pratik14@rustypages.in:/home/pratik14/"
+
+alias ll 'ls -alF'
+alias la 'ls -A'
+alias l 'ls -CF'
+
+# sudo commands
+alias ss 'sudo su'
+alias sup 'sudo apt-get update'
+alias sug 'sudo apt-get upgrade'
+alias si 'sudo apt-get install'
+
+
+alias cl "clear"
+
+alias art "php artisan"
+
+set history=2000
+set savehist=(2000 merge)
+
+
+alias ec2 "ssh -i ~/Downloads/startup-engg/ec2-abhishek.pem ubuntu@54.178.237.29"
+
+
+alias
+
