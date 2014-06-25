@@ -55,7 +55,7 @@ alias art="php artisan"
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
-source ~/powerline/powerline/bindings/zsh/powerline.zsh
+source ~/dotfiles/powerline/powerline/bindings/zsh/powerline.zsh
 
 if [ $OSTYPE = "Darwin" ]; then
     OS="mac"

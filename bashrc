@@ -113,5 +113,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. ~/powerline/powerline/bindings/bash/powerline.sh
+. ~/dotfiles/powerline/powerline/bindings/bash/powerline.sh
 zsh

@@ -6,8 +6,8 @@
 
 ########## Variables
 
-dir=~/Dropbox/abhishek-common/dotfiles                    # dotfiles directory
-olddir=~/Dropbox/abhishek-common/dotfiles_old             # old dotfiles backup directory
+dir=~/dotfiles                    # dotfiles directory
+olddir=~/dotfiles_old             # old dotfiles backup directory
 files="bashrc vimrc vim tcshrc zshrc "    # list of files/folders to symlink in homedir
 
 ##########
@@ -32,9 +32,9 @@ done
 
 # move tmux files
 echo "moving old tmux files to $olddir"
-mv ~/tmux $olddir/tmux
+mv ~/.tmux.conf $olddir/tmux
 echo "Creating symlink to $file in home directory."
-ln -s $dir/tmux ~/tmux
+ln -s $dir/tmux/tmux.conf ~/.tmux.conf
 
 # Note: install tmux, zsh, latest vim for all this to work
 
