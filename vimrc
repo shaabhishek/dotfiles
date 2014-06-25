@@ -84,7 +84,7 @@ nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories  = ["snips"]
+"let g:UltiSnipsSnippetDirectories  = ["snips"]
 
 function! g:UltiSnips_Complete()
     call UltiSnips#ExpandSnippet()
@@ -101,7 +101,7 @@ function! g:UltiSnips_Complete()
     return ""
 endfunction
 
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+au InsertEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
 
 "easier window navigation
