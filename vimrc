@@ -20,8 +20,8 @@ set t_Co=256
 
 "Colorscheme 2
 let g:solarized_termcolors=256
-set background=light
 "set background=light
+set background=dark
 colorscheme solarized
 
 set guifont=Sauce_Code_Powerline:h9
@@ -66,15 +66,18 @@ nnoremap k gk
  
 "Easy escaping to normal model
 imap jj <esc>
- 
+
+"hh in insert mode activates triggers emmet. No issues with UltiSnips anymore
+imap hh <C-y>, 
+
 "Auto change directory to match current file ,cd
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
  
 "Ultisnips
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
