@@ -57,7 +57,7 @@ let mapleader = ","
 let g:mapleader = ","
  
 "Map yy to colon :D
-map yy :
+nnoremap ; :
 
 " Fast saves
 nmap ww :w!<cr>
@@ -112,7 +112,15 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
- 
+
+" Get off my lawn
+" hahhahahaa
+
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
 "Resize vsplit
 nmap <C-v> :vertical resize +5<cr>
 nmap 25 :vertical resize 40<cr>
@@ -202,7 +210,7 @@ nmap ,lf :call FacadeLookup()<cr>
  
 " Familiar commands for file/symbol browsing
 map <D-p> :CtrlP<cr>
-map <C-r> :CtrlPBufTag<cr>
+"map <C-r> :CtrlPBufTag<cr>
  
 " I don't want to pull up these folders/files when calling CtrlP
 set wildignore+=*/vendor/**
