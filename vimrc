@@ -59,7 +59,11 @@ let g:mapleader = ","
  
 " Fast saves
 nmap <leader>w :w!<cr>
- 
+
+"Fast exits
+nmap qq :q<cr>
+
+
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
@@ -260,4 +264,5 @@ set runtimepath+=~/.vim/angular-vim-snippets
 
 "autocmd FileType php set ft=php.laravel
 let g:used_javascript_libs = 'angularjs'
+
 set directory=.,$TEMP
