@@ -8,6 +8,9 @@ case $- in
       *) return;;
 esac
 
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -113,5 +116,24 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. ~/dotfiles/powerline/powerline/bindings/bash/powerline.sh
+dotfiles="~/dotfiles"
+
+if [ $OSTYPE = "Darwin" ]; then
+    OS="mac"
+elif [ $OSTYPE = "cygwin" ]; then
+    OS="windows"
+	alias win="cd /cygdrive/c/Users/9004032456/"
+	dotfiles="/cygdrive/c/Users/9004032456/Dropbox/abhishek-common/dotfiles"
+	export http_proxy='proxy-sen.noc.sony.co.jp:10080'
+	export HTTP_proxy='proxy-sen.noc.sony.co.jp:10080'
+	export https_proxy='proxy-sen.noc.sony.co.jp:10080'
+	export HTTPS_proxy='proxy-sen.noc.sony.co.jp:10080'
+elif [ $OSTYPE = "linux-gnu" ]; then
+    OS="linux"
+else
+    OS="unknown"
+fi
+
+powerline_path="$dotfiles/powerline/powerline/bindings/bash/powerline.sh"
+. powerline_path
 zsh

@@ -55,13 +55,14 @@ alias art="php artisan"
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
-source ~/dotfiles/powerline/powerline/bindings/zsh/powerline.zsh
+dotfiles="~/dotfiles"
 
 if [ $OSTYPE = "Darwin" ]; then
     OS="mac"
 elif [ $OSTYPE = "cygwin" ]; then
     OS="windows"
-	alias win="cd /cygdrive/c/Users/9004032456/Documents/"
+	alias win="cd /cygdrive/c/Users/9004032456/"
+	dotfiles="/cygdrive/c/Users/9004032456/Dropbox/abhishek-common/dotfiles"
 	export http_proxy='proxy-sen.noc.sony.co.jp:10080'
 	export HTTP_proxy='proxy-sen.noc.sony.co.jp:10080'
 	export https_proxy='proxy-sen.noc.sony.co.jp:10080'
@@ -71,3 +72,6 @@ elif [ $OSTYPE = "linux-gnu" ]; then
 else
     OS="unknown"
 fi
+
+powerline_path="$dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
+source $powerline_path

@@ -53,12 +53,11 @@ set autowrite  "Save on buffer switch
 set mouse=a
  
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
  
 " Fast saves
-nmap <leader>w :w!<cr>
+nmap ww :w!<cr>
 
 "Fast exits
 nmap qq :q<cr>
@@ -78,18 +77,14 @@ imap hh <C-y>,
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
  
 "Ultisnips
-"Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 "" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsSnippetDirectories  = ["snips"]
 
+"Get UltiSnips to play nicely with YouCompleteMe
 function! g:UltiSnips_Complete()
     call UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0
@@ -128,9 +123,6 @@ autocmd VimEnter * wincmd l
 autocmd BufNew   * wincmd l
 
  
-"Load the current buffer in Chrome
-"nmap ,c :!open -a Google\ Chrome<cr>
- 
 "Show (partial) command in the status line
 set showcmd
  
@@ -147,8 +139,6 @@ highlight Search cterm=underline
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
  
-" Run PHPUnit tests
-map <Leader>t :!phpunit %<cr>
  
 " Easy motion stuff
 " let g:EasyMotion_leader_key = '<Space>'
@@ -170,12 +160,10 @@ command! H let @/=""
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
  
 " Abbreviations
-abbrev pft PHPUnit_Framework_TestCase
- 
 abbrev gm !php artisan generate:model
 abbrev gc !php artisan generate:controller
 abbrev gmig !php artisan generate:migration
@@ -224,39 +212,6 @@ nmap sp :split<cr>
 " Create/edit file in the current directory
 nmap :ed :edit %:p:h/
  
-" Prepare a new PHP class
-function! Class()
-    let name = input('Class name? ')
-    let namespace = input('Any Namespace? ')
- 
-    if strlen(namespace)
-        exec 'normal i<?php namespace ' . namespace . ';
-    else
-        exec 'normal i<?php
-    endif
- 
-    " Open class
-    exec 'normal iclass ' . name . ' {^M}^[O^['
-    
-    exec 'normal i^M    public function __construct()^M{^M ^M}^['
-endfunction
-nmap ,1  :call Class()<cr>
- 
-" Add a new dependency to a PHP class
-function! AddDependency()
-    let dependency = input('Var Name: ')
-    let namespace = input('Class Path: ')
- 
-    let segments = split(namespace, '\')
-    let typehint = segments[-1]
- 
-    exec 'normal gg/construct^M:H^Mf)i, ' . typehint . ' $' . dependency . '^[/}^>O$this->^[a' . dependency . ' = $' . dependency . ';^[?{^MkOprotected $' . dependency . ';^M^[?{^MOuse ' . namespace . ';^M^['
- 
-    " Remove opening comma if there is only one dependency
-    exec 'normal :%s/(, /(/g
-'
-endfunction
-nmap ,2  :call AddDependency()<cr>
 
 filetype plugin on
 
