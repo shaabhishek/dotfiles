@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-dotfiles="~/dotfiles"
+dotfiles="$HOME/dotfiles"
 
 if [ $OSTYPE = "Darwin" ]; then
     OS="mac"
@@ -134,6 +134,6 @@ else
     OS="unknown"
 fi
 
-powerline_path="$dotfiles/powerline/powerline/bindings/bash/powerline.sh"
-. powerline_path
+. "$dotfiles/powerline/powerline/bindings/bash/powerline.sh"
+#. powerline_path
 zsh

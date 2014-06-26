@@ -55,7 +55,7 @@ alias art="php artisan"
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
-dotfiles="~/dotfiles"
+dotfiles="$HOME/dotfiles"
 
 if [ $OSTYPE = "Darwin" ]; then
     OS="mac"
@@ -73,5 +73,5 @@ else
     OS="unknown"
 fi
 
-powerline_path="$dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
-source $powerline_path
+source "$dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
+#source $powerline_path
