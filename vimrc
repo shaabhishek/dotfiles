@@ -56,6 +56,9 @@ set mouse=a
 let mapleader = ","
 let g:mapleader = ","
  
+"Map yy to colon :D
+map yy :
+
 " Fast saves
 nmap ww :w!<cr>
 
