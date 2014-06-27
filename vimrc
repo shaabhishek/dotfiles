@@ -103,7 +103,7 @@ function! g:UltiSnips_Complete()
     return ""
 endfunction
 
-au InsertEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+au BufEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
 
 "easier window navigation
