@@ -60,10 +60,12 @@ let g:mapleader = ","
 nnoremap ; :
 
 " Fast saves
-nmap ww :w!<cr>
+nmap <Space><Space>  :w!<cr>
 
 "Fast exits
 nmap qq :q<cr>
+nmap qa :qa<cr>
+
 
 
 " Down is really the next line
@@ -71,7 +73,7 @@ nnoremap j gj
 nnoremap k gk
  
 "Easy escaping to normal model
-imap jj <esc>
+imap <Space>j <esc>
 
 "hh in insert mode activates triggers emmet. No issues with UltiSnips anymore
 imap hh <C-y>, 
@@ -88,23 +90,25 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsSnippetDirectories  = ["snips"]
 
 "Get UltiSnips to play nicely with YouCompleteMe
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
+"function! g:UltiSnips_Complete()
+    "call UltiSnips#ExpandSnippet()
+    "if g:ulti_expand_res == 0
+        "if pumvisible()
+            "return "\<C-n>"
+        "else
+            "call UltiSnips#JumpForwards()
+            "if g:ulti_jump_forwards_res == 0
+               "return "\<TAB>"
+            "endif
+        "endif
+    "endif
+    "return ""
+"endfunction
 
-au BufEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+"au InsertEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 "easier window navigation
  
