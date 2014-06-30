@@ -52,36 +52,40 @@ set visualbell           " don't beep
 set noerrorbells         " don't beep
 set autowrite  "Save on buffer switch
 set mouse=a
- 
+
 " With a map leader it's possible to do extra key combinations
 let mapleader = ","
 let g:mapleader = ","
- 
-"Map yy to colon :D
+
+"Map ; to colon :D
 nnoremap ; :
+nnoremap ' ;
 
 " Fast saves
-nmap <Space><Space>  :w!<cr>
+nnoremap <c-s>  :w!<cr>
 
 "Fast exits
 nmap qq :q<cr>
 nmap qa :qa<cr>
 
+nmap <c-t> :tabnew<cr>
 
 
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
- 
+
 "Easy escaping to normal model
-imap <Space>j <esc>
+"imap <Space>j <esc>
+inoremap hl <esc>
+
 
 "hh in insert mode activates triggers emmet. No issues with UltiSnips anymore
-imap hh <C-y>, 
+imap hh <C-y>,
 
 "Auto change directory to match current file ,cd
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
- 
+
 "Ultisnips
 "" If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -112,7 +116,7 @@ let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
 "easier window navigation
- 
+
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -126,36 +130,37 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+
 "Resize vsplit
 nmap <C-v> :vertical resize +5<cr>
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
- 
+
 nmap <C-b> :NERDTreeToggle<cr>
 autocmd VimEnter * NERDTree
 autocmd BufEnter * NERDTreeMirror
 autocmd VimEnter * wincmd l
 autocmd BufNew   * wincmd l
 
- 
+
 "Show (partial) command in the status line
 set showcmd
- 
+
 " Create split below
 nmap :sp :rightbelow sp<cr>
- 
+
 " Quickly go forward or backward to buffer
 nmap :bp :BufSurfBack<cr>
 nmap :bn :BufSurfForward<cr>
- 
+
 highlight Search cterm=underline
- 
+
 " Swap files out of the project root
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
- 
- 
+
+
 " Easy motion stuff
 " let g:EasyMotion_leader_key = '<Space>'
 map <Space> <Plug>(easymotion-prefix)
@@ -169,33 +174,33 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 
 autocmd cursorhold * set nohlsearch
 autocmd cursormoved * set hlsearch
- 
+
 " Remove search results
 command! H let @/=""
- 
+
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
 "autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 "autocmd InsertLeave * if pumvisible() == 0|pclose|endif
- 
+
 " Abbreviations
 abbrev gm !php artisan generate:model
 abbrev gc !php artisan generate:controller
 abbrev gmig !php artisan generate:migration
- 
+
 " Auto-remove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
- 
+
 " Edit todo list for project
 nmap ,todo :e todo.txt<cr>
- 
+
 " Laravel framework commons
 nmap <leader>lr :e app/routes.php<cr>
 nmap <leader>lca :e app/config/app.php<cr>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<cr>
 nmap <leader>lc :e composer.json<cr>
- 
+
 " Concept - load underlying class for Laravel
 function! FacadeLookup()
     let facade = input('Facade Name: ')
@@ -205,29 +210,29 @@ function! FacadeLookup()
 \       'File': 'Filesystem/Filesystem.php',
 \       'Eloquent': 'Database/Eloquent/Model.php'
 \   }
- 
+
     execute ":edit vendor/laravel/framework/src/Illuminate/" . classes[facade]
 endfunction
 nmap ,lf :call FacadeLookup()<cr>
- 
+
 
 " CtrlP Stuff
- 
+
 " Familiar commands for file/symbol browsing
 map <D-p> :CtrlP<cr>
 "map <C-r> :CtrlPBufTag<cr>
- 
+
 " I don't want to pull up these folders/files when calling CtrlP
 set wildignore+=*/vendor/**
 set wildignore+=*/public/forum/**
- 
+
 " Open splits
 nmap vs :vsplit<cr>
 nmap sp :split<cr>
- 
+
 " Create/edit file in the current directory
 nmap :ed :edit %:p:h/
- 
+
 
 filetype plugin on
 
