@@ -21,7 +21,7 @@ set t_Co=256
 "Colorscheme 2
 let g:solarized_termcolors=256
 "set background=light
-set background=dark
+set background=light
 colorscheme solarized
 
 set guifont=Sauce_Code_Powerline:h9
