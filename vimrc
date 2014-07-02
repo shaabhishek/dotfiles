@@ -47,7 +47,7 @@ set copyindent                  " copy the previous indentation on autoindenting
 set number                      " always show line numbers
 set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase,
-set timeout timeoutlen=200 ttimeoutlen=100
+"set timeout timeoutlen=1000 ttimeoutlen=100
 set visualbell           " don't beep
 set noerrorbells         " don't beep
 set autowrite  "Save on buffer switch
