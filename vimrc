@@ -77,7 +77,7 @@ nnoremap k gk
 
 "Easy escaping to normal model
 "imap <Space>j <esc>
-inoremap hl <esc>
+inoremap jj <esc>
 
 
 "hh in insert mode activates triggers emmet. No issues with UltiSnips anymore
