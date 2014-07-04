@@ -1,14 +1,14 @@
-" To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = []
-" adjust configuration for such hostile environment as Windows {{{
-if has("win32") || has("win32unix")
-	call add(g:pathogen_disabled, 'vim-powerline')
-	let g:airline_powerline_fonts=1
-else
-	call add(g:pathogen_disabled, 'vim-airline')
-	let g:Powerline_symbols = 'fancy'
-endif
-" }}}
+ "To disable a plugin, add it's bundle name to the following list
+"let g:pathogen_disabled = []
+ "adjust configuration for such hostile environment as Windows {{{
+"if has("win32") || has("win32unix")
+    "call add(g:pathogen_disabled, 'vim-powerline')
+    "let g:airline_powerline_fonts=2
+"else
+    "call add(g:pathogen_disabled, 'vim-airline')
+    "let g:Powerline_symbols = 'fancy'
+"endif
+ "}}}
 call pathogen#infect()
 "call pathogen#runtime_prepend_subdirectories(expand('~/Dropbox/abhishek-common/dotfiles/vim/bundle'))
 "call pathogen#runtime_prepend_subdirectories(expand(getcwd().'/vim/bundle'))
@@ -21,10 +21,16 @@ set t_Co=256
 "Colorscheme 2
 let g:solarized_termcolors=256
 "set background=light
-set background=light
-colorscheme solarized
+let base16colorspace=256
+set background=dark
+colorscheme base16-default
 
-set guifont=Sauce_Code_Powerline:h9
+"set guifont=Sauce_Code_Powerline:h9
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
 set guifontwide=MS_Gothic:h9:cSHIFTJIS
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
@@ -50,7 +56,7 @@ set smartcase                   " ignore case if search pattern is all lowercase
 "set timeout timeoutlen=1000 ttimeoutlen=100
 set visualbell           " don't beep
 set noerrorbells         " don't beep
-set autowrite  "Save on buffer switch
+"set autowrite  "Save on buffer switch
 set mouse=a
 
 " With a map leader it's possible to do extra key combinations
@@ -62,10 +68,10 @@ nnoremap ; :
 nnoremap ' ;
 
 " Fast saves
-nnoremap <c-s>  :w!<cr>
+nnoremap ww :w!<cr>
 
 "Fast exits
-nmap qq :q<cr>
+nmap qq :bd<cr>
 nmap qa :qa<cr>
 
 nmap <c-t> :tabnew<cr>
@@ -240,5 +246,7 @@ set runtimepath+=~/.vim/angular-vim-snippets
 
 "autocmd FileType php set ft=php.laravel
 let g:used_javascript_libs = 'angularjs'
+nnoremap [l :lprev<cr>
+nnoremap ]l :lnext<cr>
 
 set directory=.,$TEMP
