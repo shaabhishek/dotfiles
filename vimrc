@@ -15,15 +15,12 @@ call pathogen#infect()
 syntax on
 set nocompatible   " Disable vi-compatibility
 set t_Co=256
-"Colorscheme 1
-"colorscheme xoria256
 
 "Colorscheme 2
 let g:solarized_termcolors=256
 "set background=light
-let base16colorspace=256
 set background=dark
-colorscheme base16-default
+colorscheme Tomorrow-Night
 
 "set guifont=Sauce_Code_Powerline:h9
 let g:airline_powerline_fonts=1
