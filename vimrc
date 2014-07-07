@@ -27,7 +27,11 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
-set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+if has("win32") || has("win32unix")
+    set guifont=Sauce_Code_Powerline:h10:cANSI
+else
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+endif
 set guifontwide=MS_Gothic:h9:cSHIFTJIS
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
@@ -65,7 +69,7 @@ nnoremap ; :
 nnoremap ' ;
 
 " Fast saves
-nnoremap ww :w!<cr>
+nnoremap <leader>w :w!<cr>
 
 "Fast exits
 nmap qq :bd<cr>
@@ -97,26 +101,11 @@ let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsSnippetDirectories  = ["snips"]
 
-"Get UltiSnips to play nicely with YouCompleteMe
-"function! g:UltiSnips_Complete()
-    "call UltiSnips#ExpandSnippet()
-    "if g:ulti_expand_res == 0
-        "if pumvisible()
-            "return "\<C-n>"
-        "else
-            "call UltiSnips#JumpForwards()
-            "if g:ulti_jump_forwards_res == 0
-               "return "\<TAB>"
-            "endif
-        "endif
-    "endif
-    "return ""
-"endfunction
-
-"au InsertEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-
+"YCM is slow if used with ctags autotriggering for large projects. Also, I
+"love to use <Tab> for UltiSnips rather than YCM
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+let g:ycm_auto_trigger = 1
 
 "easier window navigation
 
@@ -127,7 +116,6 @@ nmap <C-l> <C-w>l
 
 " Get off my lawn
 " hahhahahaa
-
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
@@ -141,10 +129,6 @@ nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
 nmap <C-b> :NERDTreeToggle<cr>
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
-autocmd VimEnter * wincmd l
-autocmd BufNew   * wincmd l
 
 
 "Show (partial) command in the status line
@@ -165,7 +149,6 @@ set directory=~/.vim/swap//
 
 
 " Easy motion stuff
-" let g:EasyMotion_leader_key = '<Space>'
 map <Space> <Plug>(easymotion-prefix)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -222,7 +205,7 @@ nmap ,lf :call FacadeLookup()<cr>
 " CtrlP Stuff
 
 " Familiar commands for file/symbol browsing
-map <D-p> :CtrlP<cr>
+"map <D-p> :CtrlP<cr>
 "map <C-r> :CtrlPBufTag<cr>
 
 " I don't want to pull up these folders/files when calling CtrlP
