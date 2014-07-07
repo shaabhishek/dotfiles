@@ -27,7 +27,11 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
-set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+if has("win32") || has("win32unix")
+    set guifont=Sauce_Code_Powerline:h10:cANSI
+else
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+endif
 set guifontwide=MS_Gothic:h9:cSHIFTJIS
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
@@ -65,7 +69,7 @@ nnoremap ; :
 nnoremap ' ;
 
 " Fast saves
-nnoremap ww :w!<cr>
+nnoremap <leader>w :w!<cr>
 
 "Fast exits
 nmap qq :bd<cr>
@@ -141,10 +145,10 @@ nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
 nmap <C-b> :NERDTreeToggle<cr>
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
-autocmd VimEnter * wincmd l
-autocmd BufNew   * wincmd l
+"autocmd VimEnter * NERDTree
+"autocmd BufEnter * NERDTreeMirror
+"autocmd VimEnter * wincmd l
+"autocmd BufNew   * wincmd l
 
 
 "Show (partial) command in the status line
