@@ -65,7 +65,7 @@ nnoremap ; :
 nnoremap ' ;
 
 " Fast saves
-nnoremap ww :w!<cr>
+nnoremap <leader>w :w!<cr>
 
 "Fast exits
 nmap qq :bd<cr>
@@ -117,6 +117,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+let g:ycm_add_preview_to_completeopt=0
 
 "easier window navigation
 
@@ -246,4 +247,5 @@ let g:used_javascript_libs = 'angularjs'
 nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
 
+let g:tern_show_signature_in_pum=1
 set directory=.,$TEMP
