@@ -16,11 +16,12 @@ syntax on
 set nocompatible   " Disable vi-compatibility
 set t_Co=256
 
-"Colorscheme 2
+"Colorscheme stuff
 let g:solarized_termcolors=256
-"set background=light
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme solarized
+"press F5 to change background color
+call togglebg#map("<F5>")
 
 "set guifont=Sauce_Code_Powerline:h9
 let g:airline_powerline_fonts=1
@@ -37,7 +38,7 @@ set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
 set linespace=1
-"set lines=50 columns=100
+set lines=50 columns=100
 
 set showmode                    " always show what mode we're currently editing in
 set nowrap                      " don't wrap lines
@@ -54,6 +55,7 @@ set copyindent                  " copy the previous indentation on autoindenting
 set number                      " always show line numbers
 set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase,
+set scrolloff=3                 " show context above/below cursorline
 "set timeout timeoutlen=1000 ttimeoutlen=100
 set visualbell           " don't beep
 set noerrorbells         " don't beep
@@ -128,9 +130,14 @@ nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
-nmap <C-b> :NERDTreeToggle<cr>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-
+"Press \\ to toggle commenting of line or selection
+map \\ <plug>NERDCommenterToggle
 "Show (partial) command in the status line
 set showcmd
 
@@ -151,7 +158,7 @@ set directory=~/.vim/swap//
 " Easy motion stuff
 map <Space> <Plug>(easymotion-prefix)
 map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+"omap / <Plug>(easymotion-tn)
 
 
 set laststatus=2   " Always show the statusline
@@ -177,6 +184,13 @@ abbrev gmig !php artisan generate:migration
 
 " Auto-remove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
+
+" md is markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set spell
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
 " Edit todo list for project
 nmap ,todo :e todo.txt<cr>

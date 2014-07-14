@@ -85,3 +85,6 @@
 [submodule "vim/bundle/vim-tern"]
 	path = vim/bundle/vim-tern
 	url = https://github.com/marijnh/tern_for_vim.git
+[submodule "vim/bundle/mru"]
+	path = vim/bundle/mru
+	url = https://github.com/yegappan/mru.git
