@@ -23,7 +23,6 @@ colorscheme solarized
 "press F5 to change background color
 call togglebg#map("<F5>")
 
-"set guifont=Sauce_Code_Powerline:h9
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -133,6 +132,7 @@ nmap 75 :vertical resize 120<cr>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>h :CtrlPMRUFiles<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
