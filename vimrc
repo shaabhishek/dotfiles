@@ -10,9 +10,7 @@
 call pathogen#infect()
 "call pathogen#runtime_prepend_subdirectories(expand('~/Dropbox/abhishek-common/dotfiles/vim/bundle'))
 "call pathogen#runtime_prepend_subdirectories(expand(getcwd().'/vim/bundle'))
-syntax on
 set nocompatible   " Disable vi-compatibility
-filetype plugin on
 
 "Colorscheme stuff
 set t_Co=256
@@ -34,6 +32,8 @@ set guifontwide=MS_Gothic:h9:cSHIFTJIS
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
+filetype plugin on
+syntax on
 
 set showmode                    " always show what mode we're currently editing in
 set showcmd                     "Show (partial) command in the status line
@@ -121,7 +121,8 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 "BUFFERS
-nnoremap qq :bd<cr>                     "Fast exits
+"Fast exits
+nnoremap qq :bd<cr>
 
 
 "DIRECTORIES
