@@ -1,4 +1,4 @@
- "To disable a plugin, add it's bundle name to the following list
+"To disable a plugin, add it's bundle name to the following list
 "let g:pathogen_disabled = []
  "adjust configuration for such hostile environment as Windows {{{
 "if has("win32") || has("win32unix")
@@ -135,6 +135,7 @@ endif
 
 "Auto change directory to match current file ,cd
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+nnoremap ,ld :lcd %:p:h<CR>:pwd<CR>
 
 nnoremap <leader>w :w!<cr>
 " Fast saves
@@ -224,3 +225,8 @@ let g:used_javascript_libs = 'angularjs'
 nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
 
+"Copy to system clipboard easily
+nnoremap <leader>y "+y
+xnoremap <leader>y "+y
+"Paste from system clipboard easily
+nnoremap <leader>v :put +<cr>
