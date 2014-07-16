@@ -123,6 +123,7 @@ nmap <C-l> <C-w>l
 "BUFFERS
 "Fast exits
 nnoremap qq :bd<cr>
+"Open a Scratch buffer
 
 
 "DIRECTORIES
@@ -140,7 +141,7 @@ nnoremap ,ld :lcd %:p:h<CR>:pwd<CR>
 nnoremap <leader>w :w!<cr>
 " Fast saves
 
-au FocusLost * :wa
+autocmd BufLeave,FocusLost * silent! wall
 nnoremap qa :qa<cr>
 nnoremap <c-t> :tabnew<cr>
 noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -186,6 +187,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "EMMET
 "hh in insert mode activates triggers emmet. No issues with UltiSnips anymore
 imap hh <C-y>,
+"TAGBAR
+nnoremap <silent> <F9> :TagbarToggle<CR>
 "TERN
 let g:tern_show_signature_in_pum=1
 
