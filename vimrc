@@ -152,7 +152,8 @@ noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo '
 map <Space> <Plug>(easymotion-prefix)
 map  / <Plug>(easymotion-sn)
 "omap / <Plug>(easymotion-tn)
-command! H let @/=""            " Remove search results
+" Remove search results
+command! H let @/=""
 highlight Search cterm=underline
 autocmd cursorhold * set nohlsearch
 autocmd cursormoved * set hlsearch
@@ -160,7 +161,9 @@ autocmd cursormoved * set hlsearch
 "Press \\ to toggle commenting of line or selection
 map \\ <plug>NERDCommenterToggle
 "CTRLP
-nnoremap <leader>b :CtrlPBuffer<CR>     "Search all buffers
+"Search all buffers
+nnoremap <leader>b :CtrlPBuffer<CR>
+"Search recently opened files in history
 nnoremap <leader>h :CtrlPMRUFiles<CR>
 " I don't want to pull up these folders/files when calling CtrlP
 set wildignore+=*/vendor/**
