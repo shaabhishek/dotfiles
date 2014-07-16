@@ -186,6 +186,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "EMMET
 "hh in insert mode activates triggers emmet. No issues with UltiSnips anymore
 imap hh <C-y>,
+"TAGBAR
+nnoremap <silent> <F9> :TagbarToggle<CR>
 "TERN
 let g:tern_show_signature_in_pum=1
 
