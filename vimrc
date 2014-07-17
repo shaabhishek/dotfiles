@@ -13,22 +13,22 @@ call pathogen#infect()
 set nocompatible   " Disable vi-compatibility
 
 "Colorscheme stuff
-set t_Co=256
-let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+if has('gui_running')
+    colorscheme base16-solarized
+    if has("win32") || has("win32unix")
+        set guifont=Sauce_Code_Powerline:h10:cANSI
+    else
+        set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+    endif
+set guifontwide=MS_Gothic:h9:cSHIFTJIS
+else
+    set t_Co=256
+    let g:solarized_termcolors=256
+endif
 call togglebg#map("<F5>")       "press F5 to change background color
 
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-if has("win32") || has("win32unix")
-    set guifont=Sauce_Code_Powerline:h10:cANSI
-else
-    set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
-endif
-set guifontwide=MS_Gothic:h9:cSHIFTJIS
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
@@ -140,7 +140,6 @@ nnoremap ,ld :lcd %:p:h<CR>:pwd<CR>
 
 nnoremap <leader>w :w!<cr>
 " Fast saves
-
 autocmd BufLeave,FocusLost * silent! wall
 nnoremap qa :qa<cr>
 nnoremap <c-t> :tabnew<cr>
@@ -149,6 +148,10 @@ noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo '
 
 "PLUGIN SPECIFIC
 
+"AIRLINE
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 "EASYMOTION
 map <Space> <Plug>(easymotion-prefix)
 map  / <Plug>(easymotion-sn)
