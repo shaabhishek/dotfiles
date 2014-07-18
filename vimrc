@@ -23,9 +23,6 @@ if has('gui_running')
         set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
     endif
 set guifontwide=MS_Gothic:h9:cSHIFTJIS
-else
-    set t_Co=256
-    let g:solarized_termcolors=256
 endif
 call togglebg#map("<F5>")       "press F5 to change background color
 
@@ -58,8 +55,8 @@ set noerrorbells         " don't beep
 set mouse=a
 
 " With a map leader it's possible to do extra key combinations
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = " "
+let g:mapleader = " "
 
 "LINES
 "Handle wrapping of text along with max line width
@@ -134,9 +131,9 @@ else
     set directory=~/swaps/
 endif
 
-"Auto change directory to match current file ,cd
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
-nnoremap ,ld :lcd %:p:h<CR>:pwd<CR>
+"Auto change directory to match current file <leader>cd
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>ld :lcd %:p:h<CR>:pwd<CR>
 
 nnoremap <leader>w :w!<cr>
 " Fast saves
@@ -153,7 +150,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 "EASYMOTION
-map <Space> <Plug>(easymotion-prefix)
+map , <Plug>(easymotion-prefix)
 map  / <Plug>(easymotion-sn)
 "omap / <Plug>(easymotion-tn)
 " Remove search results
@@ -227,7 +224,7 @@ function! FacadeLookup()
 
     execute ":edit vendor/laravel/framework/src/Illuminate/" . classes[facade]
 endfunction
-nnoremap ,lf :call FacadeLookup()<cr>
+nnoremap <leader>lf :call FacadeLookup()<cr>
 set runtimepath+=~/.vim/angular-vim-snippets
 
 let g:used_javascript_libs = 'angularjs'
