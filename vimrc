@@ -11,12 +11,15 @@ call pathogen#infect()
 "call pathogen#runtime_prepend_subdirectories(expand('~/Dropbox/abhishek-common/dotfiles/vim/bundle'))
 "call pathogen#runtime_prepend_subdirectories(expand(getcwd().'/vim/bundle'))
 set nocompatible   " Disable vi-compatibility
+filetype plugin on
+syntax on
+set t_Co=256
 
 "Colorscheme stuff
+let base16colorspace=256
 set background=dark
-colorscheme solarized
+colorscheme base16-solarized
 if has('gui_running')
-    colorscheme base16-solarized
     if has("win32") || has("win32unix")
         set guifont=Sauce_Code_Powerline:h10:cANSI
     else
@@ -29,8 +32,6 @@ call togglebg#map("<F5>")       "press F5 to change background color
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
-filetype plugin on
-syntax on
 
 set showmode                    " always show what mode we're currently editing in
 set showcmd                     "Show (partial) command in the status line
@@ -141,6 +142,7 @@ autocmd BufLeave,FocusLost * silent! wall
 nnoremap qa :qa<cr>
 nnoremap <c-t> :tabnew<cr>
 noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <silent> <leader>VI :e $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc'"<CR>
 
 
 "PLUGIN SPECIFIC

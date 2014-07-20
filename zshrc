@@ -17,11 +17,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-#Any files that do not exist on the 
+#Any files that do not exist on the
 # remote system are copied over
-#Any files that exist on both local 
-#and remote that have a newer timestamp 
-#on the local server are copied over. 
+#Any files that exist on both local
+#and remote that have a newer timestamp
+#on the local server are copied over.
 #(Conversely, any files that have an older timestamp are not copied over).
 
 alias rs="rsync -update -raz --progress"
@@ -31,7 +31,7 @@ alias cm="chmod 777"
 
 # upload to godaddy server
 # usage: r2g <source> <destination>
-alias r2g="rsync -ravz --rsync-path /home/pratik14/bin/rsync -e ssh" 
+alias r2g="rsync -ravz --rsync-path /home/pratik14/bin/rsync -e ssh"
 
 #rsync-commit
 #run this command to update the website on godaddy
@@ -75,3 +75,7 @@ fi
 
 source "$dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
 #source $powerline_path
+# Base16 Shell
+BASE16_SCHEME="solarized"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
