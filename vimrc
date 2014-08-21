@@ -193,6 +193,10 @@ imap hh <C-y>,
 nnoremap <silent> <F9> :TagbarToggle<CR>
 "TERN
 let g:tern_show_signature_in_pum=1
+"SYNTASTIC
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 
 
 " Abbreviations
